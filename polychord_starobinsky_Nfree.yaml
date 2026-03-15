@@ -1,0 +1,55 @@
+debug: True
+
+theory:
+  effective_star:
+    class: effective.EffectiveStarobinsky_SR1
+  classy:
+    stop_at_error: False
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      output: tCl pCl lCl
+      k_pivot: 0.05
+      lensing: yes
+      l_max_scalars: 2700
+      l_max_tensors: 2700
+
+
+params:
+  N_star:
+    prior: {min: 50, max: 60}
+
+  n_s:
+    value: null
+  r:
+    value: null
+
+  alpha_s:
+    value: null
+
+  A_s:
+    prior: {min: 1.8e-9, max: 3.0e-9}
+
+  H0:
+    prior: {min: 60, max: 75}
+  omega_b:
+    prior: {min: 0.020, max: 0.024}
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+
+sampler:
+  polychord:
+    nlive: 100
+    num_repeats: 20
+    precision_criterion: 0.05
+    measure_speeds: False
+    do_clustering: False
+    feedback: 3
+    compression_factor: 1
+output: chains/polychord_starobinsky_Nfree

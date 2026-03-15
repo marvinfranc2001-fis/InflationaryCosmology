@@ -1,0 +1,189 @@
+theory:
+  effective_star:
+    params:
+      N_star: null
+    speed: -1
+    stop_at_error: false
+    version: null
+    class: effective.EffectiveStarobinsky_SR1
+    input_params:
+    - N_star
+    output_params: []
+  classy:
+    path: null
+    speed: 0.2
+    stop_at_error: false
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      output: tCl pCl lCl
+      k_pivot: 0.05
+      lensing: true
+      l_max_scalars: 2700
+      l_max_tensors: 2700
+    ignore_obsolete: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: v3.3.4
+    input_params:
+    - A_s
+    - H0
+    - omega_b
+    - omega_cdm
+    - tau_reio
+    output_params: []
+likelihood:
+  planck_2018_lowl.TT:
+    lmin: 2
+    lmax: 29
+    type: CMB
+    aliases:
+    - lowT
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_highl_plik.TTTEEE_lite:
+    path: null
+    clik_file: baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik
+    product_id: '151902'
+    commands: null
+    aliases:
+    - plikHM_TTTEEE
+    speed: 500
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+params:
+  N_star:
+    prior:
+      min: 50
+      max: 60
+  n_s:
+    value: null
+    renames:
+    - ns
+  r:
+    value: null
+  alpha_s:
+    value: null
+    renames:
+    - nrun
+  A_s:
+    prior:
+      min: 1.8e-09
+      max: 3.0e-09
+    renames:
+    - As
+  H0:
+    prior:
+      min: 60
+      max: 75
+  omega_b:
+    prior:
+      min: 0.02
+      max: 0.024
+    renames:
+    - omegabh2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    renames:
+    - omegach2
+  tau_reio:
+    prior:
+      min: 0.04
+      max: 0.08
+    renames:
+    - tau
+  A_planck:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.0025
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.002
+    proposal: 0.0005
+    latex: y_\mathrm{cal}
+    renames: calPlanck
+  chi2__CMB:
+    latex: \chi^2_\mathrm{CMB}
+    derived: true
+sampler:
+  polychord:
+    sampler_type: nested
+    path: null
+    nlive: 100
+    num_repeats: 20
+    nprior: 10nlive
+    nfail: nlive
+    do_clustering: false
+    precision_criterion: 0.05
+    max_ndead: .inf
+    compression_factor: 1
+    callback_function: null
+    logzero: -1.0e+30
+    boost_posterior: 0
+    feedback: 3
+    synchronous: true
+    nlives: null
+    maximise: false
+    measure_speeds: false
+    oversample_power: 0.4
+    blocking:
+    - - 1
+      - - N_star
+    - - 1
+      - - A_s
+        - H0
+        - omega_b
+        - omega_cdm
+        - tau_reio
+    - - 1
+      - - A_planck
+    confidence_for_unbounded: 0.9999995
+    seed: null
+    posteriors: true
+    equals: true
+    cluster_posteriors: true
+    write_resume: true
+    read_resume: true
+    write_stats: true
+    write_live: true
+    write_dead: true
+    write_prior: true
+    version: null
+    supports_periodic_params: false
+output: polychord_starobinsky_Nfree
+version: 3.6.1
