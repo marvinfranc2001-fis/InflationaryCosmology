@@ -1,0 +1,60 @@
+ISCAS 2027 - NEXT SCIENTIFIC EXPERIMENT: SR1 (targeted prospective stress test)
+
+IMPORTANT: These scripts do not prove posterior fidelity. They generate NEW
+parameter combinations anchored on chain-derived examples and test their
+actual Cobaya-CLASS chi2. The original chains overlap the NN training source.
+Nuisance proposal envelopes are empirical; this is NOT an unbiased sample from
+priors or a valid posterior sample. Do not add unseen results to the paper.
+
+A) From francisco@Fran, upload the TWO scripts (not from CEDIA):
+
+scp -i ~/.ssh/id_rsa_HPC_cedia_me \
+  ~/Downloads/iscas_prospective_candidates.py \
+  ~/Downloads/iscas_prospective_exact.py \
+  marvin.jimenez__yachaytech.edu.ec@hpc.cedia.edu.ec:~/Yaml/final/Datos/ISCAS_2027/
+
+B) On CEDIA, an allocated COMPUTE NODE with enroot started, in iscas_repro:
+
+BASE=~/Yaml/final/Datos/ISCAS_2027
+ROOT="$BASE/import_local/DataProcessing/Graf_ml_definitivo"
+conda activate iscas_repro
+python "$BASE/iscas_prospective_candidates.py" \
+  --model sr1 --root "$ROOT" \
+  --chain-root ~/Yaml/final/Datos/Resultados \
+  --out "$BASE/prospective_audit" \
+  --n-pool 12000 --n-per-group 8
+
+C) Identify the newly created CSV:
+
+CSV=$(ls -t "$BASE"/prospective_audit/prospective_candidates_sr1_*/candidates.csv | head -1)
+echo "$CSV"
+head -4 "$CSV"
+
+D) Ensure the YAML path is the definitive SR1 PolyChord YAML from the
+previous exact benchmark. If the find command shows more than one candidate,
+check which was used in your successful benchmark and set it explicitly.
+
+find ~/Yaml/final/Datos -name 'polychord_starobinsky_SR1_300.input.yaml' -print
+
+Example when the following file exists:
+YAML="$BASE/import_local/DataProcessing/Data/chains_poly_SR1_300/polychord_starobinsky_SR1_300.input.yaml"
+test -f "$YAML" && echo "YAML OK: $YAML"
+
+E) While still ON COMPUTE NODE (enroot), change to inflacion:
+
+conda activate inflacion
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+python "$BASE/iscas_prospective_exact.py" \
+  --candidates "$CSV" --yaml "$YAML" \
+  --out "$BASE/prospective_audit/SR1_class_exact" \
+  --n-max 24
+
+Expected cost: about 3-5 minutes for 24 SR1 exact calls after init,
+if runtimes remain near 8.5 s per point; could be longer under node load.
+After completion, paste the script's console summary in ChatGPT.
+Do NOT switch to login1 for the calculations. If Slurm allocation expires,
+obtain a new allocation, enter enroot, and rerun the same command: the exact
+script detects already completed IDs and resumes without overwriting them.
+
+IF errors: Copy entire error text, not just the final line. No retraining,
+no new PolyChord run, and no retriggering large class benchmarks are needed.

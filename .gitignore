@@ -43,3 +43,8 @@ BK18_data/
 .ssh/
 id_ed25519
 id_rsa
+
+# ISCAS 2027 - LaTeX build files
+projects/ISCAS2027/latex/**/*.aux
+projects/ISCAS2027/latex/**/*.log
+projects/ISCAS2027/latex/**/*.synctex.gz
