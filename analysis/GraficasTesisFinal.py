@@ -417,6 +417,7 @@ def numeric_chain_files(root: Path) -> list[Path]:
             indexed.append((int(match.group(1)), path))
     return [path for _, path in sorted(indexed)]
 
+
 def load_polychord(root: Path, model: str) -> pd.DataFrame:
     path = Path(str(root) + ".1.txt")
     frame = read_cobaya_file(path)
@@ -836,6 +837,7 @@ def compatibility_report(chains: dict[str, ChainData], out: Path) -> dict:
             "common_priors_equal": all(prior_equal.values()),
             "prior_details": prior_equal,
         }
+
     poly_likes = {
         name: likes[name]
         for name in ["LCDM+r PolyChord", "SR1 PolyChord", "SR2 PolyChord"]
@@ -1549,7 +1551,5 @@ if __name__ == "__main__":
     except Exception as exc:
         print(f"\n[ERROR] {exc}", file=sys.stderr)
         raise
-
-
 
 
