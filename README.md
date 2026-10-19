@@ -79,6 +79,18 @@ The definitive exported classification results give **balanced accuracy 0.8479 Â
 
 <sub>Web-optimized previews of figures supplied in `Graf_ml_definitivo.zip`. Full-resolution originals stay in the source archive. These embedding coordinates are statistical visualization axes, not physical observables.</sub>
 
+### Direct check using the original weighted PolyChord chains
+
+<div align="center">
+
+![Original PolyChord posterior samples in the ns-r plane](figures/original_polychord_ns_r.svg)
+
+</div>
+
+This figure is calculated **from the actual weighted `polychord_starobinsky_lcdm.1.txt`, `polychord_starobinsky_SR1_300.1.txt` and `polychord_starobinsky_SR2_300_MPI.1.txt` files** using a deterministic random sample for display. It is an illustrative scatter visualization, not a KDE credible-region estimate. The weighted posterior means and 16th/50th/84th percentiles, computed from *every* row of each original chain, are available in [the machine-readable summary](results/weighted_constraints_original_polychord.csv). To regenerate both outputs, run `python scripts/recalcular_resumen_polychord.py --archives /path/to/ZIPs` after installing NumPy, pandas and Matplotlib.
+
+**Full data preservation:** Original archive hashes are included, but the ZIPs themselves are **not yet in GitHub**. See [the complete Git LFS preparation guide](docs/DATOS_GRANDES_GIT_LFS.md) and the [SHA-256 verifier](scripts/verificar_archivos.py). The CI [scientific consistency checks](.github/workflows/scientific-checks.yml) validate YAML metadata and documented evidence without downloading licensed observational data.
+
 ## Repository map
 
 | Directory | Purpose | Provenance |
