@@ -91,6 +91,12 @@ This figure is calculated **from the actual weighted `polychord_starobinsky_lcdm
 
 **Full data preservation:** All five original ZIPs (approximately 810 MB) are now stored via **Git LFS** under [data/archives/](data/archives/), in commit [`957863f`](https://github.com/marvinfranc2001-fis/InflationaryCosmology/commit/957863f81a746f397dd3a6ce081a26dcc3538189). The LFS pointer SHA-256 IDs match the [original archive manifest](data/manifests/archives_sha256.json); the upload was confirmed by Git LFS as `100% (5/5)`. Run `git lfs pull` in a local clone to obtain the full data. See the [LFS guide](docs/DATOS_GRANDES_GIT_LFS.md) and [SHA-256 verifier](scripts/verificar_archivos.py). The CI [scientific consistency checks](.github/workflows/scientific-checks.yml) validate YAML metadata and documented evidence without downloading licensed observational data.
 
+## Research extension · ISCAS 2027
+
+**[ISCAS 2027 working project →](projects/ISCAS2027/)**
+
+An independently organized follow-up to the thesis, with separate draft/revised manuscripts, editable LaTeX, experiment and benchmark scripts, packaged SR1 experiments and supplementary materials. A [safe local importer](scripts/importar_iscas2027.sh) is available to transfer the author's **original** files via Git and Git LFS. This is **ongoing research**, not part of the completed 2026 model-evidence comparison. The original 2027 files have not yet been transferred from the author's workstation.
+
 ## Repository map
 
 | Directory | Purpose | Provenance |
