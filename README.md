@@ -10,7 +10,7 @@ Advisor: **Clara Inés Rojas Cely**
 ![Cobaya](https://img.shields.io/badge/Cobaya-Bayesian%20inference-4477AA)
 ![CLASS](https://img.shields.io/badge/CLASS-CMB%20solver-218C74)
 ![PolyChord](https://img.shields.io/badge/PolyChord-Nested%20sampling-175a46)
-![Data](https://img.shields.io/badge/Status-Original%20chains%20identified-5F8C71)
+![Data](https://img.shields.io/badge/Data-5%20original%20ZIPs%20on%20Git%20LFS-218C74)
 
 **[Research](#research-overview)** · **[Results](#key-results)** · **[Repository map](#repository-map)** · **[Reproduce](#reproduction)** · **[Integrity](#scientific-integrity)**
 
@@ -89,7 +89,7 @@ The definitive exported classification results give **balanced accuracy 0.8479 �
 
 This figure is calculated **from the actual weighted `polychord_starobinsky_lcdm.1.txt`, `polychord_starobinsky_SR1_300.1.txt` and `polychord_starobinsky_SR2_300_MPI.1.txt` files** using a deterministic random sample for display. It is an illustrative scatter visualization, not a KDE credible-region estimate. The weighted posterior means and 16th/50th/84th percentiles, computed from *every* row of each original chain, are available in [the machine-readable summary](results/weighted_constraints_original_polychord.csv). To regenerate both outputs, run `python scripts/recalcular_resumen_polychord.py --archives /path/to/ZIPs` after installing NumPy, pandas and Matplotlib.
 
-**Full data preservation:** Original archive hashes are included, but the ZIPs themselves are **not yet in GitHub**. See [the complete Git LFS preparation guide](docs/DATOS_GRANDES_GIT_LFS.md) and the [SHA-256 verifier](scripts/verificar_archivos.py). The CI [scientific consistency checks](.github/workflows/scientific-checks.yml) validate YAML metadata and documented evidence without downloading licensed observational data.
+**Full data preservation:** All five original ZIPs (approximately 810 MB) are now stored via **Git LFS** under [data/archives/](data/archives/), in commit [`957863f`](https://github.com/marvinfranc2001-fis/InflationaryCosmology/commit/957863f81a746f397dd3a6ce081a26dcc3538189). The LFS pointer SHA-256 IDs match the [original archive manifest](data/manifests/archives_sha256.json); the upload was confirmed by Git LFS as `100% (5/5)`. Run `git lfs pull` in a local clone to obtain the full data. See the [LFS guide](docs/DATOS_GRANDES_GIT_LFS.md) and [SHA-256 verifier](scripts/verificar_archivos.py). The CI [scientific consistency checks](.github/workflows/scientific-checks.yml) validate YAML metadata and documented evidence without downloading licensed observational data.
 
 ## Repository map
 
@@ -123,27 +123,27 @@ To recompute cosmological likelihood evaluations you additionally need a compati
 
 ### 2. Restore the large chain ZIPs locally
 
-Place the original unmodified archive files alongside this repository (`chains_poly.zip`, `chains_mcmc.zip`, and `chainslcdm.zip`). They are kept **out of ordinary Git history** because they contain large chain sets and restart snapshots. Check hashes against [`data/manifests/archives_sha256.json`](data/manifests/archives_sha256.json).
+In a clone with Git LFS installed, run `git lfs pull` to download the original archive files from [`data/archives/`](data/archives/). They are kept **out of ordinary Git history** because they contain large chain sets and restart snapshots. Run `python3 scripts/verificar_archivos.py .` to verify their hashes against [`data/manifests/archives_sha256.json`](data/manifests/archives_sha256.json).
 
 ### 3. Reproduce the figures / evidence analysis
 
 ```bash
 python analysis/GraficasTesisFinal.py \
-  --poly-zip chains_poly.zip \
-  --mcmc-zip chains_mcmc.zip \
-  --lcdm-zip chainslcdm.zip \
+  --poly-zip data/archives/chains_poly.zip \
+  --mcmc-zip data/archives/chains_mcmc.zip \
+  --lcdm-zip data/archives/chainslcdm.zip \
   --out publication_analysis
 ```
 
-The script outputs GetDist triangle plots, the nₛ–r diagram, MCMC diagnostics, evidence tables, and CSV/LaTeX summaries. **This command has not been run in this GitHub update**, and requires the user-supplied ZIPs.
+The script outputs GetDist triangle plots, the nₛ–r diagram, MCMC diagnostics, evidence tables, and CSV/LaTeX summaries. **This full GetDist workflow has not been run in this GitHub update**; it requires the LFS downloads and installed scientific Python dependencies. Independent weighted posterior summaries and an nₛ–r graphic have been calculated from the original chains.
 
 The supplied ML external-validation program `machine_learning/validar_emulador_cobaya.py` additionally requires `tesis_chain_utils.py`, the candidate CSVs and a functioning likelihood environment; that helper source was **not** among the uploaded source files. See [`machine_learning/README.md`](machine_learning/README.md).
 
 ## Completion tracker
 
-The archive already contains the definitive input YAMLs, numerical evidence, curated ML reports and figures. Two items remain open for **complete** reproducibility:
+The archive contains definitive input YAMLs, numerical evidence, curated ML reports, figures and the **five original ZIP archives in Git LFS**. The remaining task for complete computational reproducibility is to recover missing original source files and environment snapshots:
 
-- [**#1 — Transfer the five original ZIPs through Git LFS**](https://github.com/marvinfranc2001-fis/InflationaryCosmology/issues/1). The standard GitHub connector cannot transfer Git LFS binary objects; use the verified local upload workflow.
+- [**#1 — All five original ZIP archives transferred via Git LFS (completed)**](https://github.com/marvinfranc2001-fis/InflationaryCosmology/issues/1). Upload confirmed, and LFS object IDs match the original SHA-256 hashes.
 - [**#2 — Recover original HPC and ML source files**](https://github.com/marvinfranc2001-fis/InflationaryCosmology/issues/2), including the custom chain utility module and batch submission scripts.
 
 Automated consistency checks: [![Scientific archive checks](https://github.com/marvinfranc2001-fis/InflationaryCosmology/actions/workflows/scientific-checks.yml/badge.svg)](https://github.com/marvinfranc2001-fis/InflationaryCosmology/actions/workflows/scientific-checks.yml).
