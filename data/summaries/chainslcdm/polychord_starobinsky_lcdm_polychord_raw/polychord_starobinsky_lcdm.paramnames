@@ -1,0 +1,21 @@
+n_s	n\ s
+r	r
+A_s	A\ s
+H0	H0
+omega_b	omega\ b
+omega_cdm	omega\ cdm
+tau_reio	tau\ reio
+A_planck	y_\mathrm{cal}
+BBdust	A_{B,\mathrm{dust}}
+BBsync	A_{B,\mathrm{sync}}
+BBalphadust	\alpha_{B,\mathrm{dust}}
+BBalphasync	\alpha_{B,\mathrm{sync}}
+BBbetadust	\beta_{B,\mathrm{dust}}
+BBbetasync	\beta_{B,\mathrm{sync}}
+BBdustsynccorr	\epsilon_{\mathrm{dust,sync}}
+chi2__CMB*	\chi^2_\mathrm{CMB}
+logprior__0*	\log\pi_\mathrm{0}
+loglike__planck_2018_lowl.TT*	\log\mathcal{L}_\mathrm{planck\ 2018\ lowl.TT}
+loglike__planck_2018_lowl.EE*	\log\mathcal{L}_\mathrm{planck\ 2018\ lowl.EE}
+loglike__planck_2018_highl_plik.TTTEEE_lite*	\log\mathcal{L}_\mathrm{planck\ 2018\ highl\ plik.TTTEEE\ lite}
+loglike__bicep_keck_2018*	\log\mathcal{L}_\mathrm{bicep\ keck\ 2018}

@@ -1,0 +1,11 @@
+{
+  "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "numpy": "2.3.5",
+  "pandas": "2.3.3",
+  "matplotlib": "3.10.8",
+  "scikit_learn": "1.9.0",
+  "torch": "2.13.0+cu130",
+  "torch_device_available": "cpu",
+  "command": "/home/francisco/Downloads/Datos/starobinsky_ml_pipeline_c_v2.py analyze --poly-zip chains_poly.zip --mcmc-zip chains_mcmc.zip --lcdm-zip chainslcdm.zip --base /home/francisco/Downloads/Datos --cache-dir .starobinsky_chain_cache --burn-mcmc 0.3 --max-mcmc-points 60000 --seed 42 --out ml_thesis_final_complete --n-estimators 500 --n-jobs -1 --max-classification-points 25000 --cv-splits 5 --cv-repeats 3 --label-permutations 100 --importance-repeats 20 --shap-points 1000 --embedding-points-per-dataset 3000 --umap-neighbors 40 --umap-min-dist 0.15 --autoencoder-epochs 500 --autoencoder-patience 50 --epochs 700 --patience 70 --batch-size 256 --ensemble-size 5 --n-candidates 20000 --candidate-jitter 0.18 --acquisition-beta 0.75 --top-candidates 100"
+}

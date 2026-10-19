@@ -1,0 +1,4 @@
+model,logZ,sigma_logZ,input_archive
+LCDM+r,-797.3157492846282,0.274179560762351,chainslcdm.zip
+SR1,-795.3275075271462,0.265472584645632,chains_poly.zip
+SR2,-794.4121528421132,0.263563683747322,chains_poly.zip

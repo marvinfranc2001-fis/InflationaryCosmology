@@ -1,0 +1,8 @@
+feature_group,features,n_features,balanced_accuracy_mean,balanced_accuracy_std
+primordial_with_running,n_s;r;alpha_s,3,0.9965324178736732,0.0011816963338612278
+primordial_without_running,n_s;r,2,0.9948098433619644,0.0016577216534052399
+all_physical_with_running,n_s;r;alpha_s;logA;H0;omega_b;omega_cdm;tau_reio,8,0.9921925541540852,0.0022007475451400883
+physical_plus_nuisance,n_s;r;alpha_s;logA;H0;omega_b;omega_cdm;tau_reio;A_planck;BBalphadust;BBalphasync;BBbetadust;BBbetasync;BBdust;BBdustsynccorr;BBsync,16,0.9919926941848897,0.0021077185283734225
+physical_without_running,n_s;r;logA;H0;omega_b;omega_cdm;tau_reio,7,0.8478637977246745,0.013106007299010437
+late_cosmology,logA;H0;omega_b;omega_cdm;tau_reio,5,0.3862019982343823,0.010076442504831938
+nuisance_only,A_planck;BBalphadust;BBalphasync;BBbetadust;BBbetasync;BBdust;BBdustsynccorr;BBsync,8,0.35940153776764705,0.01437234698887634
