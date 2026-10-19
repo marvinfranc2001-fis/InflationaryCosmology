@@ -1,0 +1,78 @@
+debug: false
+
+theory:
+  classy:
+    stop_at_error: false
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      output: tCl pCl lCl
+      k_pivot: 0.05
+      lensing: true
+      l_max_scalars: 2700
+      l_max_tensors: 600
+
+params:
+  N_star:
+    prior:
+      min: 50
+      max: 60
+    ref: 55
+    drop: true
+
+  n_s:
+    value: "lambda N_star: 1.0 - 2.0/N_star - 3.0/(2.0*N_star**2)"
+
+  r:
+    value: "lambda N_star: (12.0/N_star**2)*(1.0 - 2.0/N_star)"
+
+  alpha_s:
+    value: "lambda N_star: -2.0/N_star**2 - 3.0/N_star**3"
+
+  A_s:
+    prior:
+      min: 1.8e-9
+      max: 3.0e-9
+    ref: 2.1e-9
+
+  H0:
+    prior:
+      min: 60
+      max: 75
+    ref: 67.5
+
+  omega_b:
+    prior:
+      min: 0.020
+      max: 0.024
+    ref: 0.0224
+
+  omega_cdm:
+    prior:
+      min: 0.10
+      max: 0.14
+    ref: 0.12
+
+  tau_reio:
+    prior:
+      min: 0.04
+      max: 0.08
+    ref: 0.055
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+  bicep_keck_2018: null
+
+sampler:
+  polychord:
+    nlive: 300
+    num_repeats: 25
+    precision_criterion: 0.02
+    measure_speeds: false
+    do_clustering: false
+    feedback: 3
+    compression_factor: 1
+
+output: chains_SR2_300_MPI/polychord_starobinsky_SR2_300_MPI
