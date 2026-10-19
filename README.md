@@ -139,6 +139,15 @@ The script outputs GetDist triangle plots, the nₛ–r diagram, MCMC diagnostic
 
 The supplied ML external-validation program `machine_learning/validar_emulador_cobaya.py` additionally requires `tesis_chain_utils.py`, the candidate CSVs and a functioning likelihood environment; that helper source was **not** among the uploaded source files. See [`machine_learning/README.md`](machine_learning/README.md).
 
+## Completion tracker
+
+The archive already contains the definitive input YAMLs, numerical evidence, curated ML reports and figures. Two items remain open for **complete** reproducibility:
+
+- [**#1 — Transfer the five original ZIPs through Git LFS**](https://github.com/marvinfranc2001-fis/InflationaryCosmology/issues/1). The standard GitHub connector cannot transfer Git LFS binary objects; use the verified local upload workflow.
+- [**#2 — Recover original HPC and ML source files**](https://github.com/marvinfranc2001-fis/InflationaryCosmology/issues/2), including the custom chain utility module and batch submission scripts.
+
+Automated consistency checks: [![Scientific archive checks](https://github.com/marvinfranc2001-fis/InflationaryCosmology/actions/workflows/scientific-checks.yml/badge.svg)](https://github.com/marvinfranc2001-fis/InflationaryCosmology/actions/workflows/scientific-checks.yml).
+
 ## Scientific integrity
 
 > **Original source versus reconstruction.** The root-level `effective.py` is an earlier exploratory implementation. Its SR2 equations are **not** exactly the same as the definitive sampled-YAML model; the final YAMLs use explicit `lambda N_star` relationships. They have been preserved rather than rewritten. Likewise, the separate exploratory MCMC ΛCDM file includes a lensing-reconstruction likelihood and wider priors; it must not be treated as part of the homogeneous final PolyChord evidence comparison.
