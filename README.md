@@ -67,6 +67,18 @@ The uploaded MCMC checkpoints mark SR1 and SR2 as converged at R−1 = 0.00834 a
 
 The definitive exported classification results give **balanced accuracy 0.8479 ± 0.0131** without the model-imposed scalar running and **0.9922 ± 0.0022** with running. Sampler-consistency classifiers for SR1 and SR2 are near **0.50**, consistent with overlapping posterior distributions in the variables examined. High accuracy including deterministic `alpha_s` is primarily a **model-definition diagnostic**, not stronger Bayesian evidence. See [the ML methodology report](machine_learning/outputs/ML_METHODOLOGY_AND_RESULTS.md).
 
+### Selected thesis figures
+
+<table>
+<tr>
+<td width="33%" align="center"><a href="figures/previews/01_classification/models_PolyChord_without_running/confusion_matrix_normalized.jpg"><img src="figures/previews/01_classification/models_PolyChord_without_running/confusion_matrix_normalized.jpg" alt="Three-model classification confusion matrix" width="270"></a><br><sub>Posterior classification (without running)</sub></td>
+<td width="33%" align="center"><a href="figures/previews/04_embeddings/pca_posteriors.jpg"><img src="figures/previews/04_embeddings/pca_posteriors.jpg" alt="PCA of posterior samples" width="270"></a><br><sub>PCA posterior geometry</sub></td>
+<td width="33%" align="center"><a href="figures/previews/04_embeddings/umap_posteriors.jpg"><img src="figures/previews/04_embeddings/umap_posteriors.jpg" alt="UMAP of posterior samples" width="270"></a><br><sub>UMAP posterior geometry</sub></td>
+</tr>
+</table>
+
+<sub>Web-optimized previews of figures supplied in `Graf_ml_definitivo.zip`. Full-resolution originals stay in the source archive. These embedding coordinates are statistical visualization axes, not physical observables.</sub>
+
 ## Repository map
 
 | Directory | Purpose | Provenance |
