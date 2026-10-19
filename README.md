@@ -57,6 +57,16 @@ These figures are **read directly from the original `.logZ` files** supplied wit
 
 The uploaded MCMC checkpoints mark SR1 and SR2 as converged at R−1 = 0.00834 and 0.00824 respectively. See [results and integrity](results/README.md) for provenance and limitations.
 
+### Machine-learning diagnostics
+
+<div align="center">
+
+![Posterior classifier overview](assets/ml_classification.svg)
+
+</div>
+
+The definitive exported classification results give **balanced accuracy 0.8479 ± 0.0131** without the model-imposed scalar running and **0.9922 ± 0.0022** with running. Sampler-consistency classifiers for SR1 and SR2 are near **0.50**, consistent with overlapping posterior distributions in the variables examined. High accuracy including deterministic `alpha_s` is primarily a **model-definition diagnostic**, not stronger Bayesian evidence. See [the ML methodology report](machine_learning/outputs/ML_METHODOLOGY_AND_RESULTS.md).
+
 ## Repository map
 
 | Directory | Purpose | Provenance |
