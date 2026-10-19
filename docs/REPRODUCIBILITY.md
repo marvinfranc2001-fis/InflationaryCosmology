@@ -15,12 +15,13 @@
 - `Graf_ml_definitivo.zip` (~205 MiB): figures, trained models, emulators and validation datasets.
 - `Yamls.zip`: six original configuration notes.
 
-These archives are deliberately not committed into ordinary Git. Preserve their exact SHA-256 digests in `data/manifests/archives_sha256.json`. Very large `.resume` and `.joblib` blobs require Git LFS or a scientific data repository; copying their textual summaries is not a substitute for the original samples.
+These archives are now **tracked in Git LFS under `data/archives/`**, in commit [`957863f`](https://github.com/marvinfranc2001-fis/InflationaryCosmology/commit/957863f81a746f397dd3a6ce081a26dcc3538189), rather than ordinary Git. The recorded SHA-256 digests in `data/manifests/archives_sha256.json` agree with all five Git LFS pointers. Their original data can be downloaded after cloning via `git lfs pull`. Individual `.resume` and ML model files remain inside these ZIPs instead of being separately tracked.
 
 ### Verify SHA256
 
 ```bash
-sha256sum chains_poly.zip chains_mcmc.zip chainslcdm.zip Yamls.zip Graf_ml_definitivo.zip
+git lfs pull
+python3 scripts/verificar_archivos.py .
 cat data/manifests/archives_sha256.json
 ```
 
@@ -28,19 +29,15 @@ cat data/manifests/archives_sha256.json
 
 ```bash
 python -m pip install numpy pandas matplotlib getdist pyyaml
-python analysis/GraficasTesisFinal.py --poly-zip chains_poly.zip --mcmc-zip chains_mcmc.zip --lcdm-zip chainslcdm.zip --out publication_analysis
+python analysis/GraficasTesisFinal.py --poly-zip data/archives/chains_poly.zip --mcmc-zip data/archives/chains_mcmc.zip --lcdm-zip data/archives/chainslcdm.zip --out publication_analysis
 ```
 
 ### External ML validation
 
 The original `machine_learning/validar_emulador_cobaya.py` imports `tesis_chain_utils.py`, which the user did not upload here. It also requires trained candidate CSVs and Cobaya, CLASS and the appropriate licensed likelihoods. Thus the original source is archived but not yet standalone runnable.
 
-### Versioned binary files (optional)
+### Versioned binary files (completed)
 
-```bash
-git lfs install
-git lfs track 'chains*.zip' 'Graf_ml_definitivo.zip' '*.joblib' '*.pt' '*.resume'
-git add .gitattributes
-```
+All five original ZIPs were transferred successfully through Git LFS. The `.gitattributes` rule applies to `data/archives/*.zip`; after cloning, use `git lfs pull` and `git lfs ls-files`. Do not re-add unpacked restart files into ordinary Git.
 
 Do not commit SSH keys, passwords, licensed Planck/BK data or HPC account tokens. The published results in this repo were read from supplied outputs, **not recalculated with fresh nested sampling**.
