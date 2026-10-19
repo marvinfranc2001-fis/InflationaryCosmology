@@ -1,0 +1,3 @@
+method,adjusted_rand_index,normalized_mutual_information
+KMeans,0.08933914455562607,0.17458404050695625
+Gaussian mixture,0.4507110445770104,0.6293803496419496

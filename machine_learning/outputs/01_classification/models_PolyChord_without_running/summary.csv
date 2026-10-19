@@ -1,0 +1,2 @@
+experiment,datasets,target,features,n_rows,n_classes,chance_level,holdout_accuracy,holdout_balanced_accuracy,cv_balanced_accuracy_mean,cv_balanced_accuracy_std,random_label_mean,random_label_std,random_label_p_value
+models_PolyChord_without_running,SR1_PolyChord;SR2_PolyChord;LCDM_PolyChord,model,n_s;r;logA;H0;omega_b;omega_cdm;tau_reio,25969,3,0.3333333333333333,0.8399100936431105,0.8385334355845329,0.8478637977246745,0.013106007299010437,0.33351779575799967,0.010364284020046284,0.009900990099009901

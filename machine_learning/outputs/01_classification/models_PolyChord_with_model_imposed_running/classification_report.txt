@@ -1,0 +1,13 @@
+Features: ['n_s', 'r', 'alpha_s', 'logA', 'H0', 'omega_b', 'omega_cdm', 'tau_reio']
+Weighted hold-out accuracy: 0.98943438
+Weighted hold-out balanced accuracy: 0.98963994
+
+              precision    recall  f1-score   support
+
+        lcdm       1.00      0.97      0.98 0.30415509399182133
+         sr1       0.97      1.00      0.98 0.29689566894391134
+         sr2       1.00      1.00      1.00 0.29364501289309863
+
+    accuracy                           0.99 0.8946957758288313
+   macro avg       0.99      0.99      0.99 0.8946957758288313
+weighted avg       0.99      0.99      0.99 0.8946957758288313

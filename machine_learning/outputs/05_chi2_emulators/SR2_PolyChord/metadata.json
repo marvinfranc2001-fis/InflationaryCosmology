@@ -1,0 +1,53 @@
+{
+  "dataset": "SR2_PolyChord",
+  "model": "sr2",
+  "sampler": "PolyChord",
+  "likelihood_family": "Planck Plik-lite clik",
+  "yaml": "/home/francisco/Downloads/Datos/.getdist_chain_cache/poly/chains_poly_SR2_300/polychord_starobinsky_SR2_300_MPI.updated.yaml",
+  "features": [
+    "N_star",
+    "A_s",
+    "H0",
+    "omega_b",
+    "omega_cdm",
+    "tau_reio",
+    "A_planck",
+    "BBdust",
+    "BBsync",
+    "BBalphadust",
+    "BBalphasync",
+    "BBbetadust",
+    "BBbetasync",
+    "BBdustsynccorr"
+  ],
+  "feature_units": {
+    "N_star": "dimensionless",
+    "A_s": "dimensionless",
+    "H0": "km s^-1 Mpc^-1",
+    "omega_b": "dimensionless",
+    "omega_cdm": "dimensionless",
+    "tau_reio": "dimensionless",
+    "A_planck": "Cobaya native unit",
+    "BBdust": "Cobaya native unit",
+    "BBsync": "Cobaya native unit",
+    "BBalphadust": "Cobaya native unit",
+    "BBalphasync": "Cobaya native unit",
+    "BBbetadust": "Cobaya native unit",
+    "BBbetasync": "Cobaya native unit",
+    "BBdustsynccorr": "Cobaya native unit"
+  },
+  "targets": [
+    "chi2",
+    "chi2__bicep_keck_2018",
+    "chi2__planck_2018_highl_plik.TTTEEE_lite",
+    "chi2__planck_2018_lowl.EE",
+    "chi2__planck_2018_lowl.TT"
+  ],
+  "n_train": 5886,
+  "n_validation": 1261,
+  "n_test": 1262,
+  "ensemble_size": 5,
+  "architecture": "14-128-96-64-5; SiLU; BatchNorm; Dropout(0.05)",
+  "locality_warning": "The emulator is valid only inside the posterior-supported region represented by the training chain.",
+  "chi2_warning": "Absolute chi-square values from different likelihood implementations must not be combined."
+}
