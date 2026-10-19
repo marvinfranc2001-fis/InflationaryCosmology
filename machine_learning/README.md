@@ -1,13 +1,19 @@
-# Machine learning — inventario de la tesis
+# Machine learning | posterior analysis
 
-La tesis estudió clasificación de posteriores (regresión logística, random forest), ablación, permutation tests, SHAP, PCA y UMAP; emuladores neuronales locales de χ² con PyTorch y validación externa Cobaya/CLASS, además de autoencoders. Estos métodos **no reemplazaron** las evidencias calculadas por PolyChord.
+`Graf_ml_definitivo.zip` includes the definitive exported outputs across seven groups:
 
-Los códigos originales deben recuperarse de `~/Yaml/final/Datos/`:
-- `ml_final_tesis.py`
-- `pytorch_tesis.py`
-- `tesis_chain_utils.py`
-- `validar_emulador_cobaya.py`
-- `grafin_publicable_getdist_verde.py`
-- `codigos_tesis_corregidos/`, `ml_final/`, `pytorch_resultados_tesis_nuevos/`
+| Directory | Methods |
+|---|---|
+| 01_classification | Three-model posterior classification and MCMC/PolyChord consistency |
+| 02_ablation | Parameter ablation and relevance |
+| 03_explainability | Feature importance and interpretability |
+| 04_embeddings | PCA and UMAP |
+| 05_chi2_emulators | Local neural χ² ensembles, candidates |
+| 06_external_validation | Direct Cobaya/CLASS candidate checks |
+| 07_validation_comparison | Metrics across three model variants |
 
-El importador HPC copia fuentes, pero no añade automáticamente binarios de entrenamiento ni datos grandes. Una vez recuperados, registrar semillas, particiones, arquitectura, hiperparámetros y métricas de validación.
+Selected light summaries are under `outputs/`. The complete archive has an indexed file list in `data/manifests/Graf_ml_definitivo.csv` but its large binary classifiers/checkpoints remain in the original ZIP.
+
+Original Python source: [`validar_emulador_cobaya.py`](validar_emulador_cobaya.py) (external checks). This script imports **`tesis_chain_utils.py`**, which has not been uploaded. Also missing from the attachments is the ML pipeline source that generated all the archived plots; these should be recovered separately without inventing their contents.
+
+**Classification accuracy is not Bayesian evidence.** Local emulators are supplementary computational diagnostics and must be validated against the same likelihood implementation that generated their training targets.

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="350" viewBox="0 0 940 350">
+<rect width="940" height="350" rx="20" fill="#f8faf9"/>
+<text x="42" y="51" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="bold" fill="#142a23">Bayesian evidence comparison</text>
+<text x="42" y="77" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#547267">Δ ln Z relative to ΛCDM + r · PolyChord · nlive = 300</text>
+<line x1="255" y1="115" x2="255" y2="293" stroke="#8b9c92" stroke-width="2"/>
+<line x1="255" y1="294" x2="817" y2="294" stroke="#b4c9bd" stroke-width="1"/>
+<text x="35" y="146" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#1d4032">ΛCDM + r</text>
+<text x="35" y="209" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#1d4032">Starobinsky SR1</text>
+<text x="35" y="270" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#1d4032">Starobinsky SR2</text>
+<rect x="255" y="121" width="4" height="31" rx="2" fill="#7c8a84"/>
+<rect x="255" y="181" width="342" height="31" rx="6" fill="#4c9876"/>
+<rect x="255" y="242" width="499" height="31" rx="6" fill="#117a65"/>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="19" fill="#24382e">
+<text x="274" y="143">0.000</text><text x="611" y="204">+1.988</text><text x="769" y="264">+2.904</text></g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#6b7e71"><text x="255" y="316">0</text><text x="423" y="316">1</text><text x="595" y="316">2</text><text x="763" y="316">3</text></g>
+<text x="38" y="336" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#6b7e71">Source: uploaded chain .logZ files; pairwise model preference depends on the adopted priors and datasets.</text>
+</svg>

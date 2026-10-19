@@ -1,0 +1,22 @@
+{
+  "Yamls.zip": {
+    "sha256": "c98a213317665665703d74fb799e6ddc1ebad8071050e5fb0fc37b5a466b8789",
+    "bytes": 4672
+  },
+  "chains_poly.zip": {
+    "sha256": "97c91bc82f9c527378a6a67271072d7654870f46168acc573d98c6593bdc8040",
+    "bytes": 387480823
+  },
+  "chains_mcmc.zip": {
+    "sha256": "9fcd6b7c33f412e7c599671c3aaec40c27ac86333b3d1bbf821149e6022d8597",
+    "bytes": 143684644
+  },
+  "chainslcdm.zip": {
+    "sha256": "d137a24ccb0d05d86668376eb32af44c171ed8b9d09baf542607f0f13c2c3a37",
+    "bytes": 63548377
+  },
+  "Graf_ml_definitivo.zip": {
+    "sha256": "759a48c4dd11d4eaf898c56c286f09e27a1f3aed64006d2248804daed2113d21",
+    "bytes": 214998882
+  }
+}

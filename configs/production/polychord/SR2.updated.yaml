@@ -1,0 +1,342 @@
+theory:
+  classy:
+    path: null
+    speed: 0.2
+    stop_at_error: false
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      output: tCl pCl lCl
+      k_pivot: 0.05
+      lensing: true
+      l_max_scalars: 2700
+      l_max_tensors: 600
+    ignore_obsolete: false
+    use_renames: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: v3.3.4
+    input_params:
+    - n_s
+    - r
+    - alpha_s
+    - A_s
+    - H0
+    - omega_b
+    - omega_cdm
+    - tau_reio
+    output_params: []
+likelihood:
+  planck_2018_lowl.TT:
+    lmin: 2
+    lmax: 29
+    type: CMB
+    aliases:
+    - lowT
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_lowl.EE:
+    type: CMB
+    aliases:
+    - lowE
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_highl_plik.TTTEEE_lite:
+    path: null
+    clik_file: baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik
+    product_id: '151902'
+    aliases:
+    - plikHM_TTTEEE
+    speed: 500
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  bicep_keck_2018:
+    path: null
+    dataset_file: BK18_cosmomc/data/BK18lf_dust/BK18lf_dust.dataset
+    dataset_params:
+      maps_use:
+      - BK18_K95_B
+      - BK18_150_B
+      - BK18_220_B
+      - BK18_B95e_B
+      - W023e_B
+      - P030e_B
+      - W033e_B
+      - P044e_B
+      - P143e_B
+      - P217e_B
+      - P353e_B
+      use_min: 1
+      use_max: 9
+    map_separator: x
+    l_max: 2700
+    aliases:
+    - BK15
+    speed: 90
+    lform_dust_decorr: lin
+    lform_sync_decorr: lin
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - BBdust
+    - BBsync
+    - BBalphadust
+    - BBalphasync
+    - BBbetadust
+    - BBbetasync
+    - BBdustsynccorr
+    - EEtoBB_dust
+    - EEtoBB_sync
+    - BBTdust
+    - delta_dust
+    - delta_sync
+    - gamma_corr
+    - gamma_95
+    - gamma_150
+    - gamma_220
+    output_params: []
+params:
+  N_star:
+    prior:
+      min: 50
+      max: 60
+    ref: 55
+    drop: true
+  n_s:
+    value: 'lambda N_star: 1.0 - 2.0/N_star - 3.0/(2.0*N_star**2)'
+    derived: true
+    renames:
+    - ns
+  r:
+    value: 'lambda N_star: (12.0/N_star**2)*(1.0 - 2.0/N_star)'
+    derived: true
+  alpha_s:
+    value: 'lambda N_star: -2.0/N_star**2 - 3.0/N_star**3'
+    derived: true
+    renames:
+    - nrun
+  A_s:
+    prior:
+      min: 1.8e-09
+      max: 3.0e-09
+    ref: 2.1e-09
+    renames:
+    - As
+  H0:
+    prior:
+      min: 60
+      max: 75
+    ref: 67.5
+  omega_b:
+    prior:
+      min: 0.02
+      max: 0.024
+    ref: 0.0224
+    renames:
+    - omegabh2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    renames:
+    - omegach2
+  tau_reio:
+    prior:
+      min: 0.04
+      max: 0.08
+    ref: 0.055
+    renames:
+    - tau
+  A_planck:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.0025
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.002
+    proposal: 0.0005
+    latex: y_\mathrm{cal}
+    renames: calPlanck
+  BBdust:
+    prior:
+      min: 0
+      max: 15
+    ref:
+      dist: norm
+      loc: 3
+      scale: 0.1
+    proposal: 0.1
+    latex: A_{B,\mathrm{dust}}
+  BBsync:
+    prior:
+      min: 0.0
+      max: 50.0
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 1.0
+    proposal: 1.0
+    latex: A_{B,\mathrm{sync}}
+  BBalphadust:
+    prior:
+      min: -1.0
+      max: 0.0
+    ref:
+      dist: norm
+      loc: -0.42
+      scale: 0.01
+    proposal: 0.01
+    latex: \alpha_{B,\mathrm{dust}}
+  BBalphasync:
+    prior:
+      min: -1.0
+      max: 0.0
+    ref:
+      dist: norm
+      loc: -0.6
+      scale: 0.01
+    proposal: 0.01
+    latex: \alpha_{B,\mathrm{sync}}
+  BBbetadust:
+    prior:
+      min: 0.8
+      max: 2.4
+    ref:
+      dist: norm
+      loc: 1.59
+      scale: 0.02
+    proposal: 0.02
+    latex: \beta_{B,\mathrm{dust}}
+  BBbetasync:
+    prior:
+      dist: norm
+      loc: -3.1
+      scale: 0.3
+    ref:
+      dist: norm
+      loc: -3.1
+      scale: 0.02
+    proposal: 0.02
+    latex: \beta_{B,\mathrm{sync}}
+  BBdustsynccorr:
+    prior:
+      min: -1.0
+      max: 1.0
+    ref:
+      dist: norm
+      loc: 0.2
+      scale: 0.01
+    proposal: 0.01
+    latex: \epsilon_{\mathrm{dust,sync}}
+  EEtoBB_dust:
+    value: 2
+  EEtoBB_sync:
+    value: 2
+  BBTdust:
+    value: 19.6
+  delta_dust:
+    value: 1.0
+  delta_sync:
+    value: 1.0
+  gamma_corr:
+    value: 0.0
+  gamma_95:
+    value: 0.0
+  gamma_150:
+    value: 0.0
+  gamma_220:
+    value: 0.0
+  chi2__CMB:
+    latex: \chi^2_\mathrm{CMB}
+    derived: true
+sampler:
+  polychord:
+    path: null
+    nlive: 300
+    num_repeats: 25
+    nprior: 10nlive
+    nfail: nlive
+    do_clustering: false
+    precision_criterion: 0.02
+    max_ndead: .inf
+    compression_factor: 1
+    callback_function: null
+    logzero: -1.0e+30
+    boost_posterior: 0
+    feedback: 3
+    synchronous: true
+    nlives: null
+    maximise: false
+    measure_speeds: false
+    oversample_power: 0.4
+    blocking:
+    - - 1
+      - - N_star
+        - A_s
+        - H0
+        - omega_b
+        - omega_cdm
+        - tau_reio
+    - - 1
+      - - A_planck
+    - - 17
+      - - BBdust
+        - BBsync
+        - BBalphadust
+        - BBalphasync
+        - BBbetadust
+        - BBbetasync
+        - BBdustsynccorr
+    confidence_for_unbounded: 0.9999995
+    seed: null
+    posteriors: true
+    equals: true
+    cluster_posteriors: true
+    write_resume: true
+    read_resume: true
+    write_stats: true
+    write_live: true
+    write_dead: true
+    write_prior: true
+    version: null
+output: polychord_starobinsky_SR2_300_MPI
+version: 3.5.7

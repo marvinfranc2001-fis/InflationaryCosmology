@@ -1,0 +1,55 @@
+theory:
+  classy:
+    stop_at_error: false
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      output: tCl pCl lCl
+      k_pivot: 0.05
+      lensing: true
+      l_max_scalars: 2700
+      l_max_tensors: 600
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+  bicep_keck_2018: null
+params:
+  n_s:
+    prior:
+      min: 0.94
+      max: 0.99
+  r:
+    prior:
+      min: 0.0
+      max: 0.08
+  A_s:
+    prior:
+      min: 1.8e-09
+      max: 3.0e-09
+  H0:
+    prior:
+      min: 60
+      max: 75
+  omega_b:
+    prior:
+      min: 0.02
+      max: 0.024
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+  tau_reio:
+    prior:
+      min: 0.04
+      max: 0.08
+sampler:
+  polychord:
+    nlive: 300
+    num_repeats: 25
+    precision_criterion: 0.02
+    measure_speeds: false
+    do_clustering: false
+    feedback: 3
+    compression_factor: 1
+output: polychord_starobinsky_lcdm
