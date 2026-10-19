@@ -1,0 +1,13 @@
+{
+  "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "model": "sr1",
+  "dataset": "SR1_PolyChord",
+  "yaml": "/home/francisco/Downloads/Datos/.getdist_chain_cache/poly/chains_poly_SR1_300/polychord_starobinsky_SR1_300.input.yaml",
+  "candidates": "/home/francisco/Downloads/Datos/ml_thesis_final_complete/05_chi2_emulators/SR1_PolyChord/active_learning_candidates.csv",
+  "n_points": 100,
+  "selection": "mixed",
+  "seed": 42,
+  "packages_path": "/home/francisco/cobaya_packages",
+  "command": "/home/francisco/Downloads/Datos/starobinsky_ml_pipeline_c_v2.py validate --poly-zip chains_poly.zip --mcmc-zip chains_mcmc.zip --lcdm-zip chainslcdm.zip --base /home/francisco/Downloads/Datos --cache-dir .starobinsky_chain_cache --burn-mcmc 0.3 --max-mcmc-points 60000 --seed 42 --out ml_thesis_final_complete --model sr1 --n-points 100 --selection mixed --save-every 1 --bootstrap 2000 --packages-path /home/francisco/cobaya_packages --resume"
+}
