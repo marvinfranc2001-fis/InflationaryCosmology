@@ -1,0 +1,27 @@
+# EJEMPLO RECONSTRUIDO NO VALIDADO CONTRA COBAYA/CLASS; NO ES PRODUCCIÓN.
+# Requiere verificar nuisance, interfaz Theory, CLASS, versiones, y datos exactos.
+theory:
+  classy:
+    extra_args:
+      Pk_ini_type: analytic_Pk
+      modes: s,t
+      k_pivot: 0.05
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+  bicep_keck_2018: null
+params:
+  n_s: {prior: {min: 0.94, max: 0.99}}
+  r: {prior: {min: 0.0, max: 0.08}}
+  alpha_s: 0.0
+  A_s: {prior: {min: 1.8e-9, max: 3.0e-9}}
+  H0: {prior: {min: 60, max: 75}}
+  omega_b: {prior: {min: 0.020, max: 0.024}}
+  omega_cdm: {prior: {min: 0.10, max: 0.14}}
+  tau_reio: {prior: {min: 0.04, max: 0.08}}
+sampler:
+  polychord:
+    nlive: 300
+    num_repeats: 25
+output: example_outputs/polychord_LCDM_r

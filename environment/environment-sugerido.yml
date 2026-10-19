@@ -1,0 +1,17 @@
+# EJEMPLO, no conda export original ni environment lock.
+name: inflacion-reconstruido
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - pyyaml
+  - cython
+  - compilers
+  - mpi4py
+  - pip:
+      - cobaya
+      - getdist
+# Instalar CLASS, PolyChord y likelihoods licenciados por separado.
